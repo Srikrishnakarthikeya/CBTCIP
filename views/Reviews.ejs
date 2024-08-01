@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Delish</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        
+        .all
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            
+            font-family: 'Roboto', 'Helvetica', sans-serif;
+            /* background-color: rgb(239, 228, 209); */
+            
+        }
+        
+        .navbar{
+            position: fixed; /* Make the navbar fixed */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            width: 100%; 
+            background-color: #666;
+        }
+        .navbar nav
+        {
+            background-color: #666;
+            width:100vw;
+            height:100px;
+            display: flex;
+            color:white;
+            /* flex-direction: row; */
+            box-shadow: 0 1px 1px rgba(0,0,0,0.08), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.16), 0 8px 8px rgba(0,0,0,0.20);
+            animation:sta 1s linear forwards;
+            background-attachment: fixed;
+        }
+        
+        @keyframes sta
+        {
+            0%
+            {
+                translate:0 -200px;
+            }
+        
+            100%
+            {
+                translate:0 0;
+            }
+        }
+        
+        .navbar nav p {
+            font-size: 5rem;
+            margin:auto 0;
+            margin-left: 60px;
+            /* margin-bottom: 9.5rem;
+            margin-top: 2.5rem; */
+            color: yellow;
+        
+            background-color: #666;
+            animation-name: par;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            /* animation-delay: 2s; */
+        }
+        
+        @keyframes par{
+            0%
+            {
+                translate:-200px 0;
+                opacity: 0;
+                border-right: 10px solid black;
+                border-bottom: 10px solid black;
+            }
+        
+            50%{
+                translate:-200px 0;
+                opacity: 0;
+                /* border-right: 10px solid black;
+                border-bottom: 10px solid black; */
+                border-left: 8px solid black;
+                /* border-top: 10px solid black; */
+            }
+        
+            99.999999999%
+            {
+                /* border-right: 10px solid black;
+                border-bottom: 10px solid black; */
+                border-left: 8px solid black;
+                /* border-top: 10px solid black; */
+            }
+        
+            100%
+            {
+                translate:0 0;
+                opacity: 1;
+            }
+        }
+        
+        .navbar ul {
+            color: black;
+            
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            padding: 0;
+            margin:auto 0;
+            margin-left: 80px;
+            position: relative;
+        }
+        
+        .navbar ul li
+        {
+            /* background-color: red; */
+            width:100px;
+            height:50px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7.5%;
+            color:white
+        
+            /* transition: all 0.1s; */
+        }
+        
+        
+        
+        .navbar ul li:hover
+        {
+            /* background-color: red;
+            width:100px;
+            height:50px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7.5%; */
+             animation: ppp 0.5s linear forwards; 
+        }
+        
+        @keyframes ppp
+        {
+            0%
+            {
+                background-color: white;
+                width:100px;
+            height:50px;
+            }
+        
+            50%{
+                background-color: #666;
+                border-radius: 7.5%;
+                width:100px;
+            height:50px;
+            }
+        
+            100%
+            {
+                background-color: #666;
+                border-radius: 15%;
+                scale:0.85;
+                width:100px;
+            height:50px;
+            }
+        }
+        
+        
+        
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            /* transition: color 0.5s; */
+            color:white
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #444;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+        }
+
+        .container {
+            position: absolute;
+            left:16vw;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: #FF7F50 0px 3px 8px;
+            margin-top: 150px;
+        }
+
+        .review {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .reviewer {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color:green;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .stars {
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .all {
+            margin-top: 70px;
+            border-bottom: 2px solid black;
+            padding-bottom: 20px;
+        }
+
+        .stars img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .comment {
+            margin-top: 0.5rem;
+            color:rgb(150, 222, 150);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #444;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .navbar nav ul li:hover{
+            background-color: #E2725B;
+            height: 20px;
+            margin:0 auto;
+            width:100px;
+            border-radius: 10px;
+        }
+        
+        .stars{
+            margin-top: 20px;
+        }
+        header .icons i,
+header .icons a{
+    cursor:pointer;
+    margin: left 0.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color:black;
+    border-radius:50%;
+    background: #eee;
+
+}
+header .icons i:hover,
+header .icons a:hover{
+    color: #fff;
+    background: orangered;
+    transform: rotate(360deg);
+
+}
+header .icons #menu-bars{
+    display: none;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+
+    
+
+    <section class="all">
+        <section class="navbar">
+            <nav>
+                <p>EVENT4U
+                </p>
+                <ul>
+                    <li><a class="first" href="/main">Home </a></li>
+                    <li><a href="/about_us">About Us</a></li>
+                    <li><a href="/review">Reviews</a></li>
+                    <li><a href="/contact_us">Write a Review</a></li>
+                    <!-- <div id="icons">
+                        <a href="#" class="fas fa-shopping-cart"></a>
+                        <a href="profile" class="fa fa-user"></a>
+                    </div> -->
+                </ul>
+            </nav>
+        </section>
+    <!-- <div class="container"> -->
+        <header>
+            <!-- <h1>Great Reviews by Our Well Wishers</h1> -->
+        </header>
+        
+        
+
+        <div class="review">
+            <% for(let i = 0; i < content.length; i++) { %>
+                <div class="all">
+            <div class="reviewer"><h4>Name: </h4><%= content[i].name %></div>
+            
+            <div class="comment">
+                <h4>Comment: </h4><%= content[i].message%>
+            </div>
+            <!-- <div class="stars">
+                <div class="box">
+                    <div class="stars1">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <br>
+
+                    </div>
+                </div>
+            </a>
+        </div> -->
+    </div>
+        <% } %>
+        </div>
+    </section>
+
+        
+
+    </div>
+
+    <footer>
+        &copy; 2024 Delish. All rights reserved.
+    </footer>
+
+</body>
+</html>

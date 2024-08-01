@@ -1,0 +1,178 @@
+/* order_summary.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+header{
+    position: fixed;
+    top:0; left:0; right:0;
+    background: white;
+    padding:1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+header .logo{
+    color: var(--black);
+    font-size:2rem;
+    font-weight:bolder;
+}
+header .logo i{
+    color: orangered;
+}
+header .navbar a{
+    font-size: 1rem;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    color:var(--light-color);
+}
+header .navbar a.active,
+header .navbar a:hover{
+    color: #fff;
+    background: orangered;
+}
+header .icons i,
+header .icons a{
+    cursor:pointer;
+    margin: left 0.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color:black;
+    border-radius:50%;
+    background: #eee;
+
+}
+header .icons i:hover,
+header .icons a:hover{
+    color: #fff;
+    background: orangered;
+    transform: rotate(360deg);
+
+}
+header .icons #menu-bars{
+    display: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.order-details,
+.total-amount {
+    margin-bottom: 20px;
+}
+
+.order-details h3,
+.total-amount h3 {
+    color: #333;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-details ul li {
+    margin-bottom: 10px;
+}
+
+.total-amount p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.pay-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pay-btn:hover {
+    background-color: #45a049;
+}
+InputContainer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+  }
+  
+  .input {
+    width: 260px;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    caret-color: rgb(255, 81, 0);
+  }
+  
+  .labelforsearch {
+    cursor: text;
+    padding: 0px 12px;
+  }
+  
+  .searchIcon {
+    width: 17px;
+  }
+  
+  .border {
+    height: 40%;
+    width: 2px;
+    background-color: rgb(223, 223, 223);
+  }
+  
+  .micIcon {
+    width: 12px;
+  }
+  
+  .micButton {
+    padding: 0px 15px 0px 12px;
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+    transition-duration: .3s;
+  }
+  
+  .searchIcon path {
+    fill: rgb(114, 114, 114);
+  }
+  
+  .micIcon path {
+    fill: rgb(255, 81, 0);
+  }
+  
+  .micButton:hover {
+    background-color: rgb(255, 230, 230);
+    transition-duration: .3s;
+  }

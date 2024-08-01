@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Result</title>
+    <style>
+        /* Reset default styles and set a base font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        /* Header styles */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        /* Booking details styles */
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #2980b9;
+        }
+
+        /* List styles */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Total budget highlight */
+        p:last-of-type {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #27ae60;
+            background-color: #e8f8f5;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Print button styles */
+        #printButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        #printButton:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p, li {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            #printButton {
+                display: none;
+            }
+
+            h1, h2, p, li {
+                color: black;
+            }
+
+            li {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            p:last-of-type {
+                background-color: white;
+                border: 2px solid #27ae60;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking Details</h1>
+    <p><strong>Name:</strong> <%= name %></p>
+    <p><strong>Email:</strong> <%= email %></p>
+    <p><strong>Phone:</strong> <%= phone %></p>
+    <p><strong>Date:</strong> <%= date %></p>
+    <p><strong>Number of People:</strong> <%= numberOfPeople %></p>
+    <p><strong>Number of Hours:</strong> <%= numberOfHours %></p>
+    
+    <h2>Selected Services and Budgets:</h2>
+    <ul>
+    <% results.forEach(function(result) { %>
+        <li><strong><%= result.service.charAt(0).toUpperCase() + result.service.slice(1) %>:</strong> $<%= result.budget.toFixed(2) %></li>
+    <% }); %>
+    </ul>
+    
+    <p><strong>Total Estimated Budget:</strong> $<%= results.reduce((total, result) => total + result.budget, 0).toFixed(2) %></p>
+
+    <button id="printButton" onclick="window.print()">Print Booking Details</button>
+
+    <script>
+        // This script ensures that the print dialog opens when the button is clicked
+        document.getElementById('printButton').addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>

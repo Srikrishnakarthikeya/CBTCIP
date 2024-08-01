@@ -1,0 +1,71 @@
+/* admin.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black; 
+    color: #f0570b; 
+    background: linear-gradient(to top, #000000, #666666);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid rgb(46, 41, 41); 
+    border-radius: 5px;
+    background-color: #ffffff; }
+
+h1 {
+    text-align: center; 
+    color: #f0570b; 
+}
+
+.user-entry {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.user-entry:hover {
+    background-color: #e9ecef; /* Change background color on hover */
+}
+
+.user-entry p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.user-entry strong {
+    color: #007bff;
+}
+
+.user-entry .username,
+.user-entry .email {
+    width: 200px; 
+    display: inline-block;
+    
+}
+
+.user-entry .username {
+    width: 150px; /* Set width for username span */
+    display: inline-block;
+    margin-right: 20px; /* Add margin to increase spacing */
+}
+
+.user-entry button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+    transition: background-color 0.3s; 
+}
+
+.user-entry button:hover {
+    background-color: #06a396; 
+}

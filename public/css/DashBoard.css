@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fefbfb; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fffafa; 
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(249, 245, 245); 
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+
+.chart {
+    width: 45%;
+    background-color: rgb(249, 92, 20); 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.chart h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: rgb(2, 2, 1); 
+}
+
+.chart-description {
+    font-size: 14px;
+    color: rgb(2, 2, 1); 
+}
+
+.chart:nth-child(odd) {
+    background-color: rgb(255, 81, 0); 
+    color: #000000; 
+}
+
+.chart:nth-child(odd) h2,
+.chart:nth-child(odd) .chart-description {
+    color: #0a0000; 
+}
+
+header .icons i,
+header .icons a {
+    cursor: pointer;
+    margin: left 0.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color: black;
+    border-radius: 50%;
+    background: #eee;
+
+}
+
+header .icons i:hover,
+header .icons a:hover {
+    color: #fff;
+    background: orangered;
+    transform: rotate(360deg);
+
+}
+
+header .icons #menu-bars {
+    display: none;
+}
+.InputContainer {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    padding-left: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
+}
+header .navbar a {
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    color: var(--light-color);
+
+}
+
+header .navbar a.active,
+header .navbar a:hover {
+    color: #fbf6f6;
+    background: orangered;
+}
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Invitation Card Creator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #invitation {
+            display: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 40px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #invitation:hover {
+            transform: rotate(0deg);
+        }
+        #invitation h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+        #printButton {
+            display: none;
+            background-color: #2ecc71;
+            margin-top: 20px;
+        }
+        #printButton:hover {
+            background-color: #27ae60;
+        }
+        .decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50 0 L100 50 L50 100 L0 50 Z" fill="%233498db" opacity="0.2"/></svg>');
+            background-size: contain;
+            opacity: 0.5;
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @media print {
+            body, html {
+                margin: 0;
+                padding: 0;
+                background-color: white;
+            }
+            body * {
+                visibility: hidden;
+            }
+            #invitation, #invitation * {
+                visibility: visible;
+            }
+            #invitation {
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(-3deg);
+                box-shadow: none;
+                border: 2px solid #000;
+                max-width: 100%;
+                height: auto;
+                page-break-inside: avoid;
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+            .decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Stylish Invitation Card Creator</h1>
+    <form id="invitationForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+        
+        <label for="occasion">Occasion:</label>
+        <input type="text" id="occasion" required>
+        
+        <label for="startTime">Start Time:</label>
+        <input type="time" id="startTime" required>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        
+        <label for="style">Card Style:</label>
+        <select id="style">
+            <option value="elegant">Elegant</option>
+            <option value="playful">Playful</option>
+            <option value="formal">Formal</option>
+        </select>
+        
+        <button type="submit">Create Invitation</button>
+    </form>
+    <div id="invitation"></div>
+    <button id="printButton" onclick="window.print()">Print Invitation</button>
+
+    <script>
+        document.getElementById('invitationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const occasion = document.getElementById('occasion').value;
+            const startTime = document.getElementById('startTime').value;
+            const date = document.getElementById('date').value;
+            const style = document.getElementById('style').value;
+
+            let bgColor, fontColor, fontFamily;
+            switch(style) {
+                case 'elegant':
+                    bgColor = '#f9f2f4';
+                    fontColor = '#8e44ad';
+                    fontFamily = 'Dancing Script, cursive';
+                    break;
+                case 'playful':
+                    bgColor = '#e8f8f5';
+                    fontColor = '#16a085';
+                    fontFamily = 'Comic Sans MS, cursive';
+                    break;
+                case 'formal':
+                    bgColor = '#eaecee';
+                    fontColor = '#2c3e50';
+                    fontFamily = 'Georgia, serif';
+                    break;
+            }
+
+            const invitationText = `
+                <h2>You're Invited!</h2>
+                <p>Dear friends and family,</p>
+                <p>${name} cordially invites you to join in celebrating:</p>
+                <h3>${occasion}</h3>
+                <p><strong>Date:</strong> ${new Date(date).toDateString()}</p>
+                <p><strong>Time:</strong> ${startTime}</p>
+                <p>We look forward to seeing you there!</p>
+                <p>Best wishes,</p>
+                <p>${name}</p>
+            `;
+
+            const invitationDiv = document.getElementById('invitation');
+            invitationDiv.innerHTML = invitationText;
+            invitationDiv.style.display = 'block';
+            invitationDiv.style.backgroundColor = bgColor;
+            invitationDiv.style.color = fontColor;
+            invitationDiv.style.fontFamily = fontFamily;
+            
+            document.getElementById('printButton').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="./Images/Restaurants/download.png" type="image/icon type">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+
+
+<body onload="myload()">
+    <%- include('header', { pageTitle: 'Your Page Title Here', activePage: 'identifierForActivePage' }) %>
+
+    <div class="loader-container" id="loader">
+        <img src="./Images/loader/loader.gif">
+
+    </div>
+
+    <!--Header section start-->
+    <%- include('./header', { pageTitle: 'Home', activePage: 'home' }) %>
+
+
+    <p id="search-query-display"></p>
+<!-- Search Results Container -->
+ <div id="searchResults"></div>
+
+    <section class="home" id="home-section">
+        <!--Add-->
+        <div class="add">
+            <div class="offer">
+                <h2>30% off on your<br> first order</h2>
+                <a href="./ksbakers"><button class="ordr">Order Now</button></a>
+            </div>
+            <div class="add-container">
+                <img src="./Images/banner/burger banner.jpg">
+            </div>
+
+        </div>
+        <!--Add ends-->
+        <!--Specials-->
+        <div class="spl">
+            <h2>Our Specials</h2>
+        </div>
+        <div class="table">
+            <a href="./dishes"><img src="./Images/Dishes/Chicken-Biryani.jpg" height="150">
+                <h4>Biryani</h4>
+            </a>
+            <a href="./dishes"><img src="./Images/Dishes/chicken.jpeg" height="150">
+                <h4>Chicken Lolipop</h4>
+            </a>
+            <a href="./dishes"><img src="./Images/Dishes/panner tikka.jpg" height="150">
+                <h4>Panner Tikka</h4>
+            </a>
+            <a href="./dishes"><img src="./Images/Dishes/garlicprawns.jpg" height="150">
+                <h4>Garlic Prawns</h4>
+            </a>
+            <a href="./dishes"><img src="./Images/Dishes/vegpulao.jpg" height="150">
+                <h4>Veg Pulao</h4>
+            </a>
+            <a href="./dishes"><img src="./Images/Dishes/apollo fish.jpg" height="150">
+                <h4>Apollo fish</h4>
+            </a>
+        </div>
+
+        <!--Top Restaurants-->
+        <div class="top-re" id="top-re-container">
+            <h2>Top Restaurants</h2>
+            <div class="table1">
+                <a href="./Barbeque"><img src="./Images/Restaurants/barbeque.jpg" height="150">
+                    <h4>Barbeque</h4>
+                    <p>tandoori, biryani, Starters</p>
+                </a>
+                
+                <a href="./paradise"><img src="./Images/Restaurants/paradise.jpg" height="150">
+                    <h4>Paradise</h4>
+                    <p>tandoori, biryani, Starters, deserts</p>
+                </a>
+                <a href="./ramkibandi"><img src="./Images/Restaurants/ramkibandi.jpg" height="150">
+                    <h4>Ram Ki Bandi</h4>
+                    <p>dosa</p>
+                </a>
+                <a href="./dominos"><img src="./Images/Restaurants/dominos.jpg" height="150">
+                    <h4>Domino's</h4>
+                    <p>Pizza, Burger</p>
+                </a>
+                
+                <a href="./platform65"><img src="./Images/Restaurants/platform65.jpg" height="150">
+                    <h4>Platform65</h4>
+                    <p>tandoori, biryani, Starters</p>
+                </a>
+            </div>
+        </div>
+        <div class="container-grocery">
+            <img src="./Images/banner/grocery-delivery.png" alt="Norway" style="width:100%;">
+            <div class="text-block">
+                <h2>HELLO!</h2>
+                <h4>Anything you need? </h4>
+                <p>Get your grocery, food, vegetables at your door step<br>
+                    Stay Home and Enjoy our services. CLICK ON ORDER NOW TO CONTACT US ON WHATSAPP</p>
+                <div class="ordergrocery">
+                    <a href="https://api.whatsapp.com/send?phone=+919391428024&text=I wanted to order grocery/meat/vegetables"
+                        class="orderg" onclick="mygrocery()"><i class="fab fa-whatsapp"></i> Order Now</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!--Restaurants-->
+
+        <section class="barb" id="biryani">
+            <h1 class="barbeque" style="font-size: 56px;margin-top: 20px;">Restaurants</h1>
+            <hr class="line" style="margin: 20px;">
+            <div class="box-container">
+                <a href="./barbeque" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/barbeque.jpg">
+                        <div class="stars">
+                            <h3>Barbeque</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Starters,biryani,tandoori</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./dominos" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/dominos.jpg">
+                        <div class="stars">
+                            <h3>Domino's</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Pizza ,Burger, Bread</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="./paradise" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/paradise.jpg">
+                        <div class="stars">
+                            <h3>Paradise</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Starters,biryani,tandoori</p>
+
+                        </div>
+                    </div>
+                </a>
+                <a href="./ramkibandi" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/ramkibandi.jpg">
+                        <div class="stars">
+                            <h3>Ram ki Bandi</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Idli, Dosa, Breakfast</p>
+
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./platform65" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/platform65.jpg">
+                        <div class="stars">
+                            <h3>Platform 65</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Starters,biryani,tandoori</p>
+
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="./hotnspicy" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/hotnspicy.jpg">
+                        <div class="stars">
+                            <h3>Hot N Spicy</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Starters,biryani,tandoori</p>
+
+                        </div>
+                    </div>
+                </a>
+                <a href="./ksbakers" style="color: black;">
+                    <div class="box">
+                        <img src="./Images/Restaurants/ksbakers.png">
+                        <div class="stars">
+                            <h3>KS Bakers</h3>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <br>
+                            <p>Starters,biryani,tandoori</p>
+                        </div>
+                    </div>
+                </a>
+        </section>
+    </section>
+  
+     <!---------------------------Footer Section ------------------------------>
+    <%- include('footer') %>
+
+
+    <!--Home  ends-->
+    
+    <script src="./scripts/search-results.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        }
+        window.onscroll = () => {
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        }
+       
+        var preloader = document.getElementById("loading");
+        function myload() {
+            preloader.style.display = "none";
+        }
+
+
+        const btn = document.querySelector("button");
+        const post = document.querySelector(".post");
+        const widget = document.querySelector(".star-widget");
+        const editBtn = document.querySelector(".edit");
+
+        btn.onclick = () => {
+            widget.style.display = "none";
+            post.style.display = "block";
+            editBtn.onclick = () => {
+                widget.style.display = "block";
+                post.style.display = "none";
+            }
+            return false;
+        }
+        function openAbout() {
+            document.getElementById("about").style.width = "100%";
+
+        }
+        function closeNav() {
+            document.getElementById("about").style.width = "0%";
+        }
+        var preloader = document.getElementById("loader");
+
+        function myloader() {
+            preloader.style.display = "none";
+        }
+        function mygrocery() {
+            confirm("Order Now on Whatsapp click ok to continue");
+        }
+        function myload() {
+        // Get the loader container
+        var loader = document.getElementById('loader');
+        // Hide the loader container
+        loader.style.display = 'none';
+    }
+        
+    </script>
+
+            
+    <!--JavaScript ends -->
+
+</body>
+
+</html>

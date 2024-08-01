@@ -1,0 +1,1614 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Owner Login</title>
+
+</head>
+<body>
+  <div class="container">
+    <h2>Restaurant Owner Login</h2>
+    <% if (typeof error !== 'undefined') { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+    <form action="/login" method="POST">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="./Images/Restaurants/download.png" type="image/icon type">
+    <!-- <link rel="stylesheet" href="css/login.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> -->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+:root{
+    --green: lightgreen;
+    --black: black;
+    --light-color:#666;
+    --box-shadow:0 .5rem 1.5rem rgba(0,0,0,.1);
+   
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+/* Existing styles */
+
+/* Login container styles */
+.container1 {
+  margin: 20px auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body
+{
+    background-image: url('data:image/jpeg;base64,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');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index:50000;
+}
+.container1 h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.container1 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container1 label {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.container1 input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container1 button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container1 button:hover {
+  background-color: #0056b3;
+}
+
+.error1 {
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+  
+  .input {
+    width: 260px;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.5em;
+    caret-color: rgb(255, 81, 0);
+  }
+  
+  .labelforsearch {
+    cursor: text;
+    padding: 0px 12px;
+  }
+  
+  .searchIcon {
+    width: 17px;
+  }
+  
+  .border {
+    height: 40%;
+    width: 2px;
+    background-color: rgb(223, 223, 223);
+  }
+  
+  .micIcon {
+    width: 12px;
+  }
+  
+  .micButton {
+    padding: 0px 15px 0px 12px;
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+    transition-duration: .3s;
+  }
+  
+  .searchIcon path {
+    fill: rgb(114, 114, 114);
+  }
+  
+  .micIcon path {
+    fill: rgb(255, 81, 0);
+  }
+  
+  .micButton:hover {
+    background-color: rgb(255, 230, 230);
+    transition-duration: .3s;
+  }
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.2s linear;
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top:2.5rem;
+    scroll-behavior: smooth;
+}
+html::-webkit-scrollbar{
+    
+    display:block;
+    height:10px;
+    width: 10px;
+    
+}
+html::-webkit-scrollbar-track{
+    
+    border-radius: 0;
+}
+html::-webkit-scrollbar-thumb{
+    background: rgb(158, 158, 158);
+    border-radius: 5px;
+}
+html::-webkit-scrollbar-thumb:hover{
+    background:orangered;
+}
+header{
+    position: fixed;
+    top:0; left:0; right:0;
+    background: white;
+    padding:1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+header .logo{
+    color: var(--black);
+    font-size:2.5rem;
+    font-weight:bolder;
+}
+header .logo i{
+    color: orangered;
+}
+header .navbar a{
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    padding: .5rem 1.5rem;
+    color:var(--light-color);
+}
+header .navbar a.active,
+header .navbar a:hover{
+    color: #fff;
+    background: orangered;
+}
+header .icons i,
+header .icons a{
+    cursor:pointer;
+    margin: left 0.5rem;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    width: 4.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color:black;
+    border-radius:50%;
+    background: #eee;
+
+}
+header .icons i:hover,
+header .icons a:hover{
+    color: #fff;
+    background: orangered;
+    transform: rotate(360deg);
+
+}
+header .icons #menu-bars{
+    display: none;
+}
+/*home page*/
+section .spl h2{
+    margin-top: 80px;
+    margin-left: 105px;
+    font-size: 40px;
+
+}
+
+section .table{
+    display:flex;
+    border-radius:.5rem;
+    padding-left: 100px;
+    overflow-x: auto;
+}
+section .table::-webkit-scrollbar{
+    
+    display:block;
+    height:10px;
+    width: 20px;
+    
+}
+section .table::-webkit-scrollbar-track{
+    
+    border-radius: 0;
+}
+section .table::-webkit-scrollbar-thumb{
+    background: white;
+    border-radius: 10px;
+}
+section .table::-webkit-scrollbar-thumb:hover{
+    background:orangered;
+}
+
+section .table a{
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    margin-top: 20px;
+    padding: .5rem 1.5rem;
+    text-align: center;
+    color:black;
+
+}
+section .table a img{
+    border-radius: 5px;
+    height:180px;
+    margin: 0 auto;
+    
+}
+section .table a img:hover{
+    transform: scale(1.2);
+}
+section .table a h4{
+    padding-top: 20px;
+}
+section .table a h4:hover{
+    color: orangered;
+}
+section .top-re h2{
+    margin-left: 105px;
+    font-size:40px;
+}
+section .table1{
+    display:flex;
+    border-radius:.5rem;
+    padding-left: 100px;
+    overflow-x: auto;
+}
+section .table1 a{
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    margin-top: 20px;
+    padding: .5rem 1.5rem;
+    text-align: center;
+    color:black;
+
+}
+section .table1 a img{
+    border-radius: 5px;
+    height:180px;
+    margin: 0 auto;
+    
+}
+section .table1 a img:hover{
+    transform: scale(1.2);
+}
+section .table1 a h4{
+    padding-top: 20px;
+}
+
+section .table1 a h4:hover{
+    color: orangered;
+}
+section .table1 a p{
+    
+    color:rgb(105, 104, 104);
+}
+section .table1 a:hover {
+    color:orangered;
+}
+section .table1 a:hover p{
+    color:orangered;
+}
+section .table1::-webkit-scrollbar{
+    
+    display:block;
+    height:10px;
+    width: 20px;
+    
+}
+section .table1::-webkit-scrollbar-track{
+    
+    border-radius: 0;
+}
+section .table1::-webkit-scrollbar-thumb{
+    background: white;
+    border-radius: 10px;
+}
+section .table1::-webkit-scrollbar-thumb:hover{
+    background:orangered;
+}
+
+section .res h2{
+    margin-left: 105px;
+    font-size:25px;
+}
+section .res hr.line{
+        border:none;
+        height: 20px;
+        width: 90%;
+        height: 50px;
+        margin-top: 0;
+        border-bottom: 1px solid #1f1209;
+        box-shadow: 0 20px 20px -20px #333;
+        margin: -50px auto 10px; 
+    
+}
+.checked{
+    color: orangered;
+}
+section .restaurants{
+   
+    margin-top: 20px;
+    margin-left: 105px;
+}
+section .restaurants table{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+section .restaurants table td{
+    padding: 1rem 2rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(153, 151, 151);
+    
+}
+section .restaurants table td a{
+    font-size: 1.7rem;
+    color: #1f1209;
+    
+}
+section .restaurants table td p{
+    font-size: 15px;
+}
+section .restaurants table td img{
+    border-radius: 5px;
+}
+section .restaurants table td h4{
+    padding-top: 20px;
+}
+section .restaurants table td h4:hover{
+    color: orangered;
+}
+section .restaurants table td img:hover{
+    transform: scale(1.2);
+}
+section{
+    padding-bottom: 80px;
+}
+.container{
+    width: 1200px;
+    background-color:#24262b;
+    margin: auto;
+}
+
+.row{
+    display:flex;
+    flex-wrap:nowrap;
+}
+ul{
+    list-style: none;
+}
+.footer{
+    position: sticky;
+    Transform: translateY 125px;
+    margin-left: auto;
+    background: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+    width: 25%;
+    height: 140px;
+    padding: 0 10px;
+}
+.footer-col h4{
+    cursor: default;
+    font-size: 13.5pt;
+    font-weight: normal;
+    color: orangered;
+    padding-bottom: 10px;
+
+}
+
+.footer-col ul a
+{
+    font-size:25px;
+    color:orangered;
+}
+.footer-col ul i{
+    font-size:35px;
+    color:orangered;
+}
+.footer-col ul span{
+    cursor:pointer;
+    font-size:35px;
+    font-weight:bold;
+    color:white;
+}
+.footer-col ul span:hover{
+    color:orangered;
+}
+.map ul a{
+    margin-left: 10px;
+    font-size: 15px;
+    color:white;
+}
+.footer-col .mail ul i{
+    padding-top: 20px;
+    
+    font-size:25px;
+}
+.footer-col .mail span{
+    
+    padding-left: 15px;;
+    font-size: 13px;
+    font-weight: normal;
+}
+.footer-col .map ul i{
+    padding-top:30px;
+    font-size: 25px;
+}
+.footer-col .map span{
+    font-weight: normal;
+    font-size:13px;
+    margin-left: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color:white;
+    
+}
+.footer-col ul li a{
+    line-height: 1.6;
+    font-size:11pt;
+    text-decoration: none;
+    color:white;
+    
+}
+.footer-col ul li a:hover{
+    color:orangered;
+}
+.footer .social-links a,
+.footer .social-links i{
+    margin-left: 0.5rem;
+    text-align: center;
+    font-size: 2.4rem;
+    height: 35px;
+    width: 45px;
+    color:white;
+    border-radius:50%;
+    
+}
+
+.container1{
+    position: relative;
+    width: 400px;
+    background: #111;
+    padding: 20px 30px;
+    border:1px solid #444;
+    border-radius:5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container1 .post{
+    display: none;
+}
+.container1 .text{
+    font-size: 25px;
+    color:#666;
+    font-weight: 500;
+}
+
+.container1 .edit{
+    position:absolute;
+    right:10px;
+    top:5px;
+    font: size 16px;
+    color: #666;
+    font-weight: 500;
+    cursor:pointer;
+}
+.container1 .edit:hover{
+    text-decoration:underline;
+    color: orangered;
+}
+.container1 .star-widget input{
+    display:none;
+}
+.star-widget label{
+    font-size: 40px;
+    color:#444;
+    padding: 10px;
+    float:right;
+    transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color:#fd4;
+}
+input:checked ~ label{
+    color:#fd4;
+}
+input#rate-5:checked ~ label{
+    color:#fe7;
+    text-shadow:  0 0 20px #952;
+}
+input#rate-4:checked ~ label{
+    color:#fe7;
+    text-shadow:  0 0 20px #952;
+}
+input#rate-3:checked ~ label{
+    color:#fe7;
+    text-shadow:  0 0 20px #952;
+}input#rate-2:checked ~ label{
+    color:#fe7;
+    text-shadow:  0 0 20px #952;
+}input#rate-1:checked ~ label{
+    color:#fe7;
+    text-shadow:  0 0 20px #952;
+}
+#rate-1:checked ~ form h4:before{
+    content: "I just hate it😡";
+}
+#rate-2:checked ~ form h4:before{
+    content: "I dont like it 😐";
+}
+#rate-3:checked ~ form h4:before{
+    content: "It is awesome 😅";
+}
+#rate-4:checked ~ form h4:before{
+    content: "I Just like it 😁";
+}
+#rate-5:checked ~ form h4:before{
+    content: "I Just love it 😍";
+}
+.container1 form{
+    display: none;
+}
+input:checked ~ form{
+    display: block;
+}
+form h4{
+    width: 100%;
+    font-size: 25px;
+    color:#fe7;
+    font-weight: 500;
+    margin:5px 0 20px 0;
+    text-align:center;
+    transition: all 0.2s ease;
+}
+
+form .textarea{
+    height: 100px;
+    width:100%;
+    overflow: hidden;
+}
+form .textarea textarea{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #eee;
+    border: 1px solid #333;
+    background: #222;
+    padding:10px;
+    font-size: 17px;
+    resize: none;
+}
+form .btn{
+    height:45px;
+    width:100%;
+    margin:15px 0;
+
+}
+form .btn button{
+    height: 100%;
+    width: 100%;
+    border:1px solid #444;
+    outline: none;
+    background:#222;
+    color: white;
+    font-size:17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form .btn button:hover{
+    background: orangered;
+}
+.icon{
+    cursor: pointer;
+}
+#co1{
+    position:fixed;
+    top:-110%;left:0;
+    height:100%;width:100%;
+    z-index: 1004;
+    background:rgba(0,0,0,.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+#co1.active{
+    top: 0;
+}
+
+#co1 label{
+    color:#fff;
+    cursor: pointer;
+    font-size:3rem;
+}
+#co1 label:hover{
+    color:orangered;
+
+}
+#co1 #close{
+    position:absolute;
+    color:#fff;
+    cursor:pointer;
+    top:2rem; right:3rem;
+    font-size: 20px;
+}
+.about{
+    height: 100%;
+    width: 0;
+    position:fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.about a{
+    padding: 60px;
+    text-align: right;
+    text-decoration: none;
+    font-size: 36px;
+    color: red;
+    display: block;
+    transition: 0.3s;
+}
+.about a:hover, .about a:focus{
+    color:#f1f1f1;
+
+}
+.about .closebtn{
+    position:abosolute;
+    top:20px;
+    right:45px;
+    font-size: 60px;
+    
+}
+.about a .closebtn{
+    color:white;
+}
+.about-overlay h1{
+    text-align: center;
+    color: orangered;
+    font-size: 45px;
+
+}
+.about-overlay p{
+    text-align: center;
+    font-size: 18px;
+    color:white;
+
+}
+.loader-container{
+    
+    position:fixed;
+    top:0;left:0;
+    z-index: 10000;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    
+
+}
+.loader-container.fade-out{
+    top: -120%;
+}
+section h1{
+    margin-left: 105px;
+    font-size: 30px;
+    color:orangered;
+}
+
+.barb{
+    margin-left: 100px;
+
+}
+.box{
+    border: none !important;
+
+}
+.barb .box-container{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit,minmax(27rem,1fr));
+    gap:5.5rem;
+}
+.barb .box-container .box{
+    cursor: pointer;
+    width: 200px;
+    height: 250px;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    
+}
+.barb .box-container .box:hover{
+    transform: scale(1.1);
+}
+.barb .box-container .box img{
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
+}
+.barb .box-container .box span{
+    font-size: 20px;
+    
+}
+
+.stars{
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    text-decoration: none;
+    background: orangered;
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .8rem 3rem;
+    color:white;
+}
+.add{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 400px;
+    align-items: center;
+    margin-top: 60px;
+    justify-content: space-between;
+}
+
+.add .add-container {
+   margin: 0 60px;
+   
+}
+
+.add .add-container img{
+    height:400px;
+    position: relative;
+    filter: drop-shadow(0 +10px 15px rgba(0, 0, 0, 0.413));
+    animation: float 3s reverse infinite;
+    transition: ease-in-out 3s;
+}
+@keyframes float {
+    0%{
+        transform: translateY(-30px);
+    }
+    50%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.offer{
+    padding: 30px;
+    margin-left: 80px;
+    font-size: 24px;
+    font-weight: 600;
+    transition: ease-in;
+    animation: slidein 2s 1;
+
+}
+@keyframes slidein{
+    from{
+        transform: translateX(-150px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.container-grocery {
+    position: relative;
+  }
+  
+  /* Bottom right text */
+  .text-block {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: rgb(61, 61, 61);
+    padding-left: 150px;
+    padding-right: 20px;
+  }
+.text-block h2{
+    font-size: 55px;
+}
+.text-block h4{
+    font-size: 25px;
+}
+.text-block p{
+    margin-top:20px;
+    font-size:15px;
+}
+.add .add-container .textimg{
+    margin-top: 150px;
+    text-transform: normal;
+    padding-left: 120px;
+    font-size:45px;
+    position: absolute;
+    color:rgb(78, 78, 78);
+    top: 8px; left: 16px;
+}
+
+.add .add-container .textbtn{
+    position: absolute;
+    top: 8px; left: 16px;
+    margin-top:200px;
+    margin-left: 400px;
+   
+    
+}
+.ordergrocery{
+    margin-top:20px;
+}
+.orderg{
+    background:orangered;
+    border:none;
+    border-radius: 5px;
+    font-size: 15px;
+    text-decoration: none;
+    color:white;
+    margin-top: 80px;
+    padding:8px;
+}
+button{
+    cursor: pointer;
+    background-color: orangered;
+    padding:15px;
+    font-size: 18px;
+    border:none;
+    color:white;
+    border-radius:5px;
+}
+button:hover{
+    color:orangered;
+    border:2px solid #666;
+    background-color: white;
+}
+.table a:hover h4 {
+    color: orangered; 
+}
+
+/*media queries*/
+@media (max-width:991px){
+    html{
+        font-size: 55%;
+    }
+    header{
+        padding: 1rem 2rem;
+    }
+    section{
+        padding: 1rem 2rem;
+    }
+    footer{
+        padding: 1rem 2rem;
+    }
+
+}
+@media (max-width:768px){
+    header .icons #menu-bars{
+        display: inline-block;
+    }
+    header .navbar{
+        position: absolute;
+        top:100%; left:0;right:0;
+        background:#fff;
+        border-top:.1rem solid rgba(0,0,0,.2);
+        border-bottom:.1rem solid rgba(0,0,0,.2);
+        padding:1rem;
+        clip-path: polygon(0 0, 100% 0,100% 0,0 0);
+
+    }
+    header .navbar.active{
+        clip-path: polygon(0 0, 100% 0,100% 100%,0% 100%);
+    }
+    header .navbar a{
+        display:block;
+        padding:1.5rem;
+        margin:1rem;
+        font-size:2rem;
+        background: #eee;
+    }
+    section .spl h2{
+        margin-left: 50px;
+        font-size: 30px;
+        
+    }
+    section .table{
+        display: flex;
+        width: 900px;
+        border-radius:.5rem;
+        padding-left: 40px;
+        overflow-x: auto;
+    }
+    section .table a{
+        font-size: 15px;
+        border-radius: .5rem;
+        margin-top: 20px;
+        text-align: center;
+        color:black;
+    
+    }
+    section .top-re h2{
+        margin-left: 50px;
+        font-size: 30px;
+        
+    }
+    section .table1{
+        display: flex;
+        width: 900px;
+        border-radius:.5rem;
+        padding-left: 40px;
+        overflow-x: auto;
+    }
+    section .table1 a{
+        font-size: 15px;
+        border-radius: .5rem;
+        margin-top: 20px;
+        text-align: center;
+        color:black;
+        margin-top: 10px;
+    }
+    section .table1 a:hover 
+
+    section .res h2{
+        margin-left: 50px;
+        font-size: 30px;
+
+    }
+    section .res hr.line{
+        border:none;
+        height: 20px;
+        width: 1000px;
+        height: 50px;
+        margin-top: 0;
+        border-bottom: 1px solid #1f1209;
+        box-shadow: 0 20px 20px -20px #333;
+        margin: -50px auto 10px; 
+    
+    }
+    .add .add-container img{
+        margin-top: 50px;
+        margin-left: 400px;
+        height:400px
+    }
+    .add .add-container .textimg{
+        margin-top: 150px;
+        text-transform: normal;
+        padding-left: 120px;
+        font-size:25px;
+        position: absolute;
+        color:rgb(78, 78, 78);
+        top: 8px; left: 16px;
+    }
+    .add .add-container .textbtn{
+        position: absolute;
+        top: 8px; left: 16px;
+        margin-top:200px;
+        margin-left: 400px;
+        
+    }
+    button{
+        margin-top: 20px;
+        cursor: pointer;
+        background-color: orangered;
+        padding:12px;
+        font-size: 18px;
+        border:none;
+        color:white;
+        border-radius:5px;
+    }
+    button:hover{
+        color:orangered;
+        border:2px solid #666;
+        background-color: white;
+    }
+    .footer{
+        background: #24262b;
+        padding: 50px 0;
+    }
+    .footer-col h4{
+        cursor: default;
+        font-size: 11.5pt;
+        font-weight: normal;
+        color: orangered;
+        padding-bottom: 10px;
+    }
+    .footer-col ul a
+{
+    font-size:25px;
+    color:orangered;
+}
+.footer-col ul i{
+    font-size:25px;
+    color:orangered;
+}
+.footer-col ul span{
+    cursor:pointer;
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+}
+
+.map ul a{
+    margin-left: 10px;
+    font-size: 15px;
+    color:white;
+}
+.footer-col .mail ul i{
+    padding-top: 20px;
+    
+    font-size:25px;
+}
+.footer-col .mail span{
+    
+    padding-left: 3px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.footer-col .map ul i{
+    padding-top:20px;
+    font-size: 20px;
+}
+.footer-col .map span{
+    font-weight: normal;
+    font-size:12px;
+    margin-left: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color:white;
+    
+}
+.footer-col ul li a{
+    line-height: 1.6;
+    font-size:12px;
+    text-decoration: none;
+    color:white;
+
+}
+section .restaurants{
+    margin-top: 8px;
+    margin-left: 25px;
+    display: inline-block;
+    
+}
+section .restaurants table{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+section .restaurants table td{
+    padding: 1rem 2rem;
+    align-items: center;
+    border-bottom: 1px solid rgb(153, 151, 151);
+}
+
+
+    
+}
+@media (max-width:1200px){
+    html{
+        font-size: 50%;
+
+    }
+    
+    .add .add-container img{
+        margin-top: 50px;
+        margin-left: 450px;
+        height:400px
+    }
+    .add .add-container .textimg{
+        margin-top: 150px;
+        text-transform: normal;
+        padding-left: 120px;
+        font-size:25px;
+        position: absolute;
+        color:rgb(78, 78, 78);
+        top: 8px; left: 16px;
+    }
+    .add .add-container .textbtn{
+        position: absolute;
+        top: 8px; left: 16px;
+        margin-top:200px;
+        margin-left: 400px;
+        
+    }
+    button{
+        margin-top: 20px;
+        cursor: pointer;
+        background-color: orangered;
+        padding:15px;
+        font-size: 15px;
+        border:none;
+        color:white;
+        border-radius:5px;
+    }
+    button:hover{
+        color:orangered;
+        border:2px solid #666;
+        background-color: white;
+    }
+}
+@media (max-width: 991px){
+    *{
+        margin:0;
+    padding: 0;
+    }
+    html{
+        font-size: 50%;
+
+    }
+    .add .add-container img{
+        margin-top: 50px;
+        margin-left: 450px;
+        height:400px
+    }
+    .add .add-container .textimg{
+        margin-top: 150px;
+        text-transform: normal;
+        padding-left: 120px;
+        font-size:25px;
+        position: absolute;
+        color:rgb(78, 78, 78);
+        top: 8px; left: 16px;
+    }
+    .add .add-container .textbtn{
+        position: absolute;
+        top: 8px; left: 16px;
+        margin-top:200px;
+        margin-left: 400px;
+        
+    }
+    button{
+        margin-top: 20px;
+        cursor: pointer;
+        background-color: orangered;
+        padding:15px;
+        font-size: 15px;
+        border:none;
+        color:white;
+        border-radius:5px;
+    }
+    button:hover{
+        color:orangered;
+        border:2px solid #666;
+        background-color: white;
+    }
+    
+    .footer{
+        background: #24262b;
+        padding: 50px 0;
+        width: 100%;
+        
+    }
+    .footer .container{
+        background:#24262b;
+        width:100%;
+        
+    }
+    .footer-col h4{
+        cursor: default;
+        font-size: 11.5pt;
+        font-weight: normal;
+        color: orangered;
+        padding-bottom: 10px;
+    }
+    .footer-col ul a
+{
+    font-size:25px;
+    color:orangered;
+}
+.footer-col ul i{
+    font-size:25px;
+    color:orangered;
+}
+.footer-col ul span{
+    cursor:pointer;
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+}
+
+.map ul a{
+    margin-left: 10px;
+    font-size: 15px;
+    color:white;
+}
+.footer-col .mail ul i{
+    padding-top: 20px;
+    
+    font-size:25px;
+}
+.footer-col .mail span{
+    
+    padding-left: 3px;
+    font-size: 12px;
+    font-weight: normal;
+}
+.footer-col .map ul i{
+    padding-top:20px;
+    font-size: 20px;
+}
+.footer-col .map span{
+    font-weight: normal;
+    font-size:12px;
+    margin-left: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color:white;
+    
+}
+.footer-col ul li a{
+    line-height: 1.6;
+    font-size:12px;
+    text-decoration: none;
+    color:white; 
+}
+ .table a:hover h4 {
+    color: orangered; 
+}
+.restaurant-link:hover .restaurant-name {
+    color: orangered; 
+}
+#top-re-container:hover .table1 a h4 {
+    color: orangered; 
+}
+}
+
+.box1{
+    margin-top: 80px;
+}
+    </style>
+</head>
+
+<body onload="myload()">
+    <div class="loader-container" id="loader">
+        <img src="./Images/loader/loader.gif">
+
+    </div>
+
+    <!--Header section start-->
+    <header>
+        <a href="#" class="logo"><i class="fa fa-utensils"></i>EVENT4U</a>
+        <nav class="navbar">
+            <a class="active" href="/main">Home</a>
+            <!-- <a href="./dishes.html">dishes</a> -->
+            <a href="/about_us" onclick="openAbout()">About Us</a>
+            <a href="/review">Reviews</a>
+            <a href="/contact_us">Write a Review</a>
+            
+        </nav>
+
+        
+        <!-- <div class="InputContainer">
+            <form action="search-results.html" method="GET">
+                <input type="text" name="query" class="input" id="input" placeholder="Search">
+                <button type="submit" class="micButton">Search</button>
+            </form>
+          
+        </div> -->
+
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="profile" class="fa fa-user"></a>
+
+
+        </div>
+
+    </header>
+    <p id="search-query-display"></p>
+<!-- Search Results Container -->
+<div class="box1">
+<div class="container" style="background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 400px;">
+  <h2 style="margin-top: 0; text-align: center;">Booking Form</h2>
+  <form action="/submit-form" method="POST" style="display: flex; flex-direction: column;">
+    <input type="hidden" id="eveName" name="eveName" value="marriage">
+    <label for="name" style="font-weight: bold;">Name:</label><br>
+    <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+    <label for="bookingTimeSlot" style="font-weight: bold;">Select Time Slot:</label><br>
+    <select id="startBookingTimeSlot" name="startBookingTimeSlot" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; height: 40px;">
+      <option value="">-- Select Start Time Slot --</option>
+      <option value="00:00">00:00</option>
+      <option value="01:00">01:00</option>
+      <option value="02:00">02:00</option>
+      <option value="03:00">03:00</option>
+      <option value="04:00">04:00</option>
+      <option value="05:00">05:00</option>
+      <option value="06:00">06:00</option>
+      <option value="07:00">07:00</option>
+      <option value="08:00">08:00</option>
+      <option value="09:00">09:00</option>
+      <option value="10:00">10:00</option>
+      <option value="11:00">11:00</option>
+      <option value="12:00">12:00</option>
+      <option value="13:00">13:00</option>
+      <option value="14:00">14:00</option>
+      <option value="15:00">15:00</option>
+      <option value="16:00">16:00</option>
+      <option value="17:00">17:00</option>
+      <option value="18:00">18:00</option>
+      <option value="19:00">19:00</option>
+      <option value="20:00">20:00</option>
+      <option value="21:00">21:00</option>
+      <option value="22:00">22:00</option>
+      <option value="23:00">23:00</option>
+    </select><br>
+
+    <label for="bookingTimeSlot" style="font-weight: bold;">Select Time Slot:</label><br>
+    <select id="endBookingTimeSlot" name="endBookingTimeSlot" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; height: 40px;">
+      <option value="">-- Select End Time Slot --</option>
+      <option value="00:00">00:00</option>
+      <option value="01:00">01:00</option>
+      <option value="02:00">02:00</option>
+      <option value="03:00">03:00</option>
+      <option value="04:00">04:00</option>
+      <option value="05:00">05:00</option>
+      <option value="06:00">06:00</option>
+      <option value="07:00">07:00</option>
+      <option value="08:00">08:00</option>
+      <option value="09:00">09:00</option>
+      <option value="10:00">10:00</option>
+      <option value="11:00">11:00</option>
+      <option value="12:00">12:00</option>
+      <option value="13:00">13:00</option>
+      <option value="14:00">14:00</option>
+      <option value="15:00">15:00</option>
+      <option value="16:00">16:00</option>
+      <option value="17:00">17:00</option>
+      <option value="18:00">18:00</option>
+      <option value="19:00">19:00</option>
+      <option value="20:00">20:00</option>
+      <option value="21:00">21:00</option>
+      <option value="22:00">22:00</option>
+      <option value="23:00">23:00</option>
+    </select><br>
+    <label for="numTables" style="font-weight: bold;">Number of Attendees:</label><br>
+    <input type="number" id="numTables" name="numTables" min="1" required style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"><br>
+    <button type="submit" style="background-color: #007bff; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; transition: background-color 0.3s ease;">Submit</button>
+  </form>
+</div>
+
+</div>
+
+</div>
+
+    <!--Footer Section-->
+    <!-- <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="footer-col">
+                    <ul>
+                        <i class="fa fa-utensils"></i>
+                        <span>DELISH.</span>
+                    </ul>
+                    <div class="map">
+                        <ul>
+                            <i class="fa fa-map-marker"></i>
+                            <span>IIIT SRICITY-Chittor District  517001.
+                            </span>
+                        </ul>
+                    </div>
+                    <div class="mail">
+                        <ul>
+                            <i class="fas fa-inbox"></i>
+                            <span>
+                                support@DELISH.com
+                            </span>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>DELISH</h4>
+                    <ul>
+                        <li><a href="#" onclick="openAbout()">about us</a></li>
+                        <li><a href="#">Our services</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                        <li><a href="#">Payment policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Delivery</a></li>
+                        <li><a href="#">My orders</a></li>
+                        <li><a href="#">Order Status</a></li>
+                        <li><a href="#">Payment options</a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Order Now</h4>
+                    <ul>
+                        <li><a href="./dishes.html">Biryani's</a></li>
+                        <li><a href="./dishes.html">Restaurants</a></li>
+                        <li><a href="./dishes.html">Starters</a></li>
+                        <li><a href="./dishes.html">Fast food</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/login"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </footer> -->
+
+    <!--Home  ends-->
+    <script src="search-results.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        }
+        window.onscroll = () => {
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        }
+       
+        var preloader = document.getElementById("loading");
+        function myload() {
+            preloader.style.display = "none";
+        }
+
+
+        const btn = document.querySelector("button");
+        const post = document.querySelector(".post");
+        const widget = document.querySelector(".star-widget");
+        const editBtn = document.querySelector(".edit");
+
+        btn.onclick = () => {
+            widget.style.display = "none";
+            post.style.display = "block";
+            editBtn.onclick = () => {
+                widget.style.display = "block";
+                post.style.display = "none";
+            }
+            return false;
+        }
+        function openAbout() {
+            document.getElementById("about").style.width = "100%";
+
+        }
+        function closeNav() {
+            document.getElementById("about").style.width = "0%";
+        }
+        var preloader = document.getElementById("loader");
+
+        function myloader() {
+            preloader.style.display = "none";
+        }
+        function mygrocery() {
+            confirm("Order Now on Whatsapp click ok to continue");
+        }
+    </script>
+
+            
+    <!--JavaScript ends -->
+
+</body>
+
+</html>

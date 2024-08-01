@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Services Form</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+            --input-background: #ffffff;
+            --input-border: #bdc3c7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            background-color: var(--input-background);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--input-border);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+        }
+
+        fieldset {
+            border: 2px solid var(--input-border);
+            border-radius: 6px;
+            padding: 20px;
+            margin: 0;
+        }
+
+        legend {
+            font-weight: bold;
+            color: var(--primary-color);
+            padding: 0 10px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+        /* Custom animation for form elements */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form > * {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        form > *:nth-child(1) { animation-delay: 0.1s; }
+        form > *:nth-child(2) { animation-delay: 0.2s; }
+        form > *:nth-child(3) { animation-delay: 0.3s; }
+        form > *:nth-child(4) { animation-delay: 0.4s; }
+        form > *:nth-child(5) { animation-delay: 0.5s; }
+        form > *:nth-child(6) { animation-delay: 0.6s; }
+        form > *:nth-child(7) { animation-delay: 0.7s; }
+        form > *:nth-child(8) { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Event Services</h1>
+        <form action="/submit-event-service" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="date" name="date" required>
+            <input type="number" name="numberOfPeople" placeholder="Number of People" required>
+            <input type="number" name="numberOfHours" placeholder="Number of Hours" required>
+            <fieldset>
+                <legend>Select Services</legend>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="catering" name="services" value="catering">
+                        <label for="catering">Catering</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="music" name="services" value="music">
+                        <label for="music">Music</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="decoration" name="services" value="decoration">
+                        <label for="decoration">Decoration</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="photography" name="services" value="photography">
+                        <label for="photography">Photography</label>
+                    </div>
+                </div>
+            </fieldset>
+            <button type="submit">Get the Details</button>
+        </form>
+    </div>
+</body>
+</html>

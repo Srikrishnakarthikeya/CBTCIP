@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | EVENT4U</title>
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="icon" href="./Images/Restaurants/download.png" type="image/icon type">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><i class=""></i>EVENT4U</a>
+        <!-- <nav class="navbar">
+            <a  href="./home">Home</a>
+            <a href="./dishes">dishes</a>
+            <a href="#" onclick="openAbout()">about</a>
+            <a class="active" href="./contact" >Contact us</a>
+            <a href="#">Orders</a>
+        </nav> -->
+
+        
+        <div class="icons">
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <!-- <a href="#" class="fas fa-shopping-cart"></a> -->
+            <a href="./login" class="fa fa-user"></a>
+            <!-- <a href="dashboard"  class="far fa-chart-bar dashboardIcon"></a> -->
+            
+            
+        </div>
+        
+    </header>
+    <div class="back">
+    <div class="container1" id="co1">
+        <div class="post">
+            <div class="text">Thanks for Rating us!</div>
+            <div class="edit">Edit</div>
+            <i class="fas fa-times" id="close"></i>
+    
+        </div>
+        <div class="star-widget">
+        <input type="radio" name="rate" id="rate-5">
+        <label for="rate-5" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-4">
+        <label for="rate-4" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-3">
+        <label for="rate-3" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-2">
+        <label for="rate-2" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-1">
+        <label for="rate-1" class="fas fa-star"></label>
+        <form action="#">
+            <i class="fas fa-times" id="close"></i>
+            <h4></h4>
+            <div class="textarea">
+                <textarea cols="30" placeholder="Describe your experience"></textarea>
+    
+            </div>
+            
+            <div class="btn">
+                <button type="submit">Post</button>
+            </div>
+        </form>
+        </div>    
+    </div>
+    </div>
+    <!-- Header section ends-->
+
+    <!--search form-->
+    
+    <div class="row">
+        <div class="box">
+            <h2><i class="fas fa-phone"></i> Contact:9876543210</h2>
+            <br>
+            <h2><i class="fas fa-at"></i> Email: support@DELISH.com</h2>
+            <br>
+            <h2><i class="fa fa-map-marker"></i>5th Floor,<br>A-118,Sangareddy, Hyderabad,<br> Telangana - 502001</h2>
+
+        </div>
+    </div>
+    <div class="contact">
+        <h1 style="font-size: 36px;">Reach Us</h1>
+
+        <form class="form" action="./home" id="form">
+            <input type="text" class="uname" name="name" placeholder="Enter Your Full Name">
+
+            <br>
+            <textarea name="paragraph_text" class="formtext" cols="50" rows="10"
+                placeholder="Enter Your Query here......"></textarea>
+
+            </textarea>
+            <br>
+            <input type="submit" class="submit" onclick="myFunction()">
+            <div id="thankYouMessage" class="thank-you-message"></div>
+        </form>
+    </div>
+    
+</body>
+
+<script>
+    function myFunction() {
+        document.getElementById("form").reset();
+        document.getElementById("thankYouMessage").style.display = "block";
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("form").addEventListener("submit", function(event) {
+            
+            event.preventDefault();
+            document.getElementById("form").reset();
+            var thankYouMessage = document.getElementById("thankYouMessage");
+            thankYouMessage.textContent = "Thank you for reaching out to us, we value your interest!";
+            thankYouMessage.classList.add("show"); 
+            setTimeout(function() {
+                thankYouMessage.classList.remove("show"); 
+            }, 5000);
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var query = urlParams.get('query');
+        
+        // Display the search query
+        document.getElementById('search-query-display').textContent = "Search results for: " + query;
+        
+        // Assuming 'search-results.js' handles the search functionality and uses the query
+        // If you're trying to use 'query' within this script, make sure the relevant code is included here
+    });
+        let menu = document.querySelector('#menu-bars');
+        let navbar = document.querySelector('.navbar');
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        }
+        window.onscroll = () => {
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        }
+       
+        var preloader = document.getElementById("loading");
+        function myload() {
+            preloader.style.display = "none";
+        }
+
+
+        const btn = document.querySelector("button");
+        const post = document.querySelector(".post");
+        const widget = document.querySelector(".star-widget");
+        const editBtn = document.querySelector(".edit");
+
+        btn.onclick = () => {
+            widget.style.display = "none";
+            post.style.display = "block";
+            editBtn.onclick = () => {
+                widget.style.display = "block";
+                post.style.display = "none";
+            }
+            return false;
+        }
+        function openAbout() {
+            document.getElementById("about").style.width = "100%";
+
+        }
+        function closeNav() {
+            document.getElementById("about").style.width = "0%";
+        }
+        var preloader = document.getElementById("loader");
+
+        function myloader() {
+            preloader.style.display = "none";
+        }
+        function myload() {
+        // Get the loader container
+        var loader = document.getElementById('loader');
+        // Hide the loader container
+        loader.style.display = 'none';
+    }
+
+   
+</script>
+
+
